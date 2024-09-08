@@ -36,7 +36,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Cursor = Cursors.Cross;
+            Cursor = Cursors.Default;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "Dice Roller";
