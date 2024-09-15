@@ -1,36 +1,94 @@
+using System.Security.Cryptography;
+
 namespace D_D_Dice
 {
+    enum dice
+    {
+        d4 = 0,
+        d6 = 1,
+        d8 = 2,
+        d10 = 3,
+        d12 = 4,
+        d20 = 5
+    }
+
     public partial class Form1 : Form
     {
+        const byte DICE_LIST_SIZE = 18;
+        ulong[] diceList;
+
+        const byte TEXTBOX_ARRAY_SIZE = 6;
+        TextBox[] textBoxArray;
+
         public Form1()
         {
             InitializeComponent();
         }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            txtD4.Text = ((ulong)0).ToString();
-            txtD6.Text = ((ulong)0).ToString();
-            txtD8.Text = ((ulong)0).ToString();
-            txtD10.Text = ((ulong)0).ToString();
-            txtD12.Text = ((ulong)0).ToString();
-            txtD20.Text = ((ulong)0).ToString();
+            textBoxArray = new[] { txtD4, txtD6, txtD8,
+                                 txtD10, txtD12, txtD20 };
+
+            diceList = new ulong[DICE_LIST_SIZE];
+
+            foreach (TextBox tb in textBoxArray)
+            {
+                tb.Text = ((ulong)0).ToString();
+            }
         }
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
+            txtResult.Clear();
 
+            ulong diceCount, 
+                sum = 0;
+
+            int roll;
+
+            int diceIndex = Convert.ToInt32(Enum.GetName(typeof(dice), 0).Substring(1));
+            for (int i = 0; i < TEXTBOX_ARRAY_SIZE; i++)
+            {
+                ulong.TryParse(textBoxArray[i].Text, out diceCount);
+                diceList[i * 2] = diceCount;
+
+                for (ulong j = 0; j < diceCount; j++)
+                {
+                    roll = RandomNumberGenerator.GetInt32(1, (diceIndex + 1));
+
+                    sum += (ulong)roll;
+                }
+                diceList[(i * 2) + 1] = sum;
+
+                sum = 0;
+                diceIndex += 2;
+            }
+
+            ulong total = 0;
+            for (int i = 0; i < DICE_LIST_SIZE; i++)
+            {
+                txtResult.Text += Enum.GetName(typeof(dice), (i / 2)) + ": count = " +
+                    diceList[i].ToString() + ", total = " + diceList[i + 1].ToString() + "\r\n";
+
+                total += diceList[i + 1];
+
+                i++;
+            }
+
+            txtResult.Text += "Total: " + total.ToString();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            txtD4.Clear();
-            txtD6.Clear();
-            txtD8.Clear();
-            txtD10.Clear();
-            txtD12.Clear();
-            txtD20.Clear();
+            foreach (TextBox tb in textBoxArray)
+            {
+                tb.Text = ((ulong)0).ToString();
+            }
 
             txtResult.Clear();
+
+            Array.Clear(diceList);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
