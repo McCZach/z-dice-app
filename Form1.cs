@@ -14,7 +14,7 @@ namespace D_D_Dice
 
     public partial class Form1 : Form
     {
-        const byte DICE_LIST_SIZE = 18;
+        const byte DICE_LIST_SIZE = 12;
         ulong[] diceList;
 
         const byte TEXTBOX_ARRAY_SIZE = 6;
@@ -66,14 +66,12 @@ namespace D_D_Dice
             }
 
             ulong total = 0;
-            for (int i = 0; i < DICE_LIST_SIZE; i++)
+            for (int i = 0; i < DICE_LIST_SIZE; i += 2)
             {
                 txtResult.Text += Enum.GetName(typeof(dice), (i / 2)) + ": count = " +
                     diceList[i].ToString() + ", total = " + diceList[i + 1].ToString() + "\r\n";
-
+                
                 total += diceList[i + 1];
-
-                i++;
             }
 
             txtResult.Text += "Total: " + total.ToString();
