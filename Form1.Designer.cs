@@ -354,8 +354,7 @@
             txtResult.Multiline = true;
             txtResult.Name = "txtResult";
             txtResult.ReadOnly = true;
-            txtResult.ScrollBars = ScrollBars.Vertical;
-            txtResult.Size = new Size(171, 117);
+            txtResult.Size = new Size(205, 117);
             txtResult.TabIndex = 20;
             txtResult.TabStop = false;
             // 

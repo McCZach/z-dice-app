@@ -42,27 +42,26 @@ namespace D_D_Dice
         {
             txtResult.Clear();
 
-            ulong diceCount, 
+            ulong diceCount, roll,
                 sum = 0;
 
-            int roll;
-
-            int diceIndex = Convert.ToInt32(Enum.GetName(typeof(dice), 0).Substring(1));
+            int diceIndex;
             for (int i = 0; i < TEXTBOX_ARRAY_SIZE; i++)
             {
+                diceIndex = int.Parse(Enum.GetName(typeof(dice), i).Substring(1));
+
                 ulong.TryParse(textBoxArray[i].Text, out diceCount);
                 diceList[i * 2] = diceCount;
 
                 for (ulong j = 0; j < diceCount; j++)
                 {
-                    roll = RandomNumberGenerator.GetInt32(1, (diceIndex + 1));
+                    roll = (ulong)RandomNumberGenerator.GetInt32(1, (diceIndex + 1));
 
-                    sum += (ulong)roll;
+                    sum += roll;
                 }
                 diceList[(i * 2) + 1] = sum;
 
                 sum = 0;
-                diceIndex += 2;
             }
 
             ulong total = 0;
