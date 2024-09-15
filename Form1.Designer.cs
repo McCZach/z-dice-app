@@ -54,6 +54,9 @@
             txtD12 = new TextBox();
             txtD10 = new TextBox();
             btnCalculate = new Button();
+            btnClear = new Button();
+            txtResult = new TextBox();
+            btnExit = new Button();
             SuspendLayout();
             // 
             // btnD4
@@ -137,6 +140,7 @@
             btnD4Up.Size = new Size(35, 40);
             btnD4Up.TabIndex = 0;
             btnD4Up.UseVisualStyleBackColor = true;
+            btnD4Up.Click += btnD4Up_Click;
             // 
             // btnD4Down
             // 
@@ -146,6 +150,7 @@
             btnD4Down.Size = new Size(35, 40);
             btnD4Down.TabIndex = 1;
             btnD4Down.UseVisualStyleBackColor = true;
+            btnD4Down.Click += btnD4Down_Click;
             // 
             // btnD6Down
             // 
@@ -155,6 +160,7 @@
             btnD6Down.Size = new Size(35, 40);
             btnD6Down.TabIndex = 4;
             btnD6Down.UseVisualStyleBackColor = true;
+            btnD6Down.Click += btnD6Down_Click;
             // 
             // btnD6Up
             // 
@@ -165,6 +171,7 @@
             btnD6Up.Size = new Size(35, 40);
             btnD6Up.TabIndex = 3;
             btnD6Up.UseVisualStyleBackColor = true;
+            btnD6Up.Click += btnD6Up_Click;
             // 
             // btnD8Down
             // 
@@ -174,6 +181,7 @@
             btnD8Down.Size = new Size(35, 40);
             btnD8Down.TabIndex = 7;
             btnD8Down.UseVisualStyleBackColor = true;
+            btnD8Down.Click += btnD8Down_Click;
             // 
             // btnD8Up
             // 
@@ -184,6 +192,7 @@
             btnD8Up.Size = new Size(35, 40);
             btnD8Up.TabIndex = 6;
             btnD8Up.UseVisualStyleBackColor = true;
+            btnD8Up.Click += btnD8Up_Click;
             // 
             // btnD20Down
             // 
@@ -193,6 +202,7 @@
             btnD20Down.Size = new Size(35, 40);
             btnD20Down.TabIndex = 16;
             btnD20Down.UseVisualStyleBackColor = true;
+            btnD20Down.Click += btnD20Down_Click;
             // 
             // btnD20Up
             // 
@@ -203,6 +213,7 @@
             btnD20Up.Size = new Size(35, 40);
             btnD20Up.TabIndex = 15;
             btnD20Up.UseVisualStyleBackColor = true;
+            btnD20Up.Click += btnD20Up_Click;
             // 
             // btnD12Down
             // 
@@ -212,6 +223,7 @@
             btnD12Down.Size = new Size(35, 40);
             btnD12Down.TabIndex = 13;
             btnD12Down.UseVisualStyleBackColor = true;
+            btnD12Down.Click += btnD12Down_Click;
             // 
             // btnD12Up
             // 
@@ -222,6 +234,7 @@
             btnD12Up.Size = new Size(35, 40);
             btnD12Up.TabIndex = 12;
             btnD12Up.UseVisualStyleBackColor = true;
+            btnD12Up.Click += btnD12Up_Click;
             // 
             // btnD10Down
             // 
@@ -231,6 +244,7 @@
             btnD10Down.Size = new Size(35, 40);
             btnD10Down.TabIndex = 10;
             btnD10Down.UseVisualStyleBackColor = true;
+            btnD10Down.Click += btnD10Down_Click;
             // 
             // btnD10Up
             // 
@@ -241,6 +255,7 @@
             btnD10Up.Size = new Size(35, 40);
             btnD10Up.TabIndex = 9;
             btnD10Up.UseVisualStyleBackColor = true;
+            btnD10Up.Click += btnD10Up_Click;
             // 
             // txtD4
             // 
@@ -293,18 +308,54 @@
             // btnCalculate
             // 
             btnCalculate.Font = new Font("Calibri", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCalculate.Location = new Point(145, 318);
+            btnCalculate.Location = new Point(12, 314);
             btnCalculate.Name = "btnCalculate";
             btnCalculate.Size = new Size(195, 44);
             btnCalculate.TabIndex = 18;
             btnCalculate.Text = "CALCULATE";
             btnCalculate.UseVisualStyleBackColor = true;
+            btnCalculate.Click += btnCalculate_Click;
+            // 
+            // btnClear
+            // 
+            btnClear.Font = new Font("Calibri", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClear.Location = new Point(12, 469);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(195, 44);
+            btnClear.TabIndex = 19;
+            btnClear.Text = "CLEAR";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
+            // 
+            // txtResult
+            // 
+            txtResult.Location = new Point(242, 314);
+            txtResult.Multiline = true;
+            txtResult.Name = "txtResult";
+            txtResult.ReadOnly = true;
+            txtResult.Size = new Size(195, 155);
+            txtResult.TabIndex = 20;
+            txtResult.TabStop = false;
+            // 
+            // btnExit
+            // 
+            btnExit.Font = new Font("Calibri", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnExit.Location = new Point(12, 533);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(195, 44);
+            btnExit.TabIndex = 21;
+            btnExit.Text = "EXIT";
+            btnExit.UseVisualStyleBackColor = true;
+            btnExit.Click += btnExit_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(490, 600);
+            Controls.Add(btnExit);
+            Controls.Add(txtResult);
+            Controls.Add(btnClear);
             Controls.Add(btnCalculate);
             Controls.Add(txtD10);
             Controls.Add(txtD12);
@@ -366,5 +417,8 @@
         private TextBox txtD12;
         private TextBox txtD10;
         private Button btnCalculate;
+        private Button btnClear;
+        private TextBox txtResult;
+        private Button btnExit;
     }
 }
