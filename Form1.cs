@@ -67,8 +67,8 @@ namespace D_D_Dice
             ulong total = 0;
             for (int i = 0; i < DICE_LIST_SIZE; i += 2)
             {
-                txtResult.Text += Enum.GetName(typeof(dice), (i / 2)) + ": count = " +
-                    diceList[i].ToString() + ", total = " + diceList[i + 1].ToString() + "\r\n";
+                txtResult.Text += Enum.GetName(typeof(dice), (i / 2)) + ": Count = " +
+                    diceList[i].ToString() + ", Total = " + diceList[i + 1].ToString() + "\r\n";
                 
                 total += diceList[i + 1];
             }
