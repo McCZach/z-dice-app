@@ -2,7 +2,7 @@ using System.Security.Cryptography;
 
 namespace D_D_Dice
 {
-    enum dice
+    enum Dice
     {
         d4 = 0,
         d6 = 1,
@@ -48,7 +48,7 @@ namespace D_D_Dice
             int diceIndex;
             for (int i = 0; i < TEXTBOX_ARRAY_SIZE; i++)
             {
-                diceIndex = int.Parse(Enum.GetName(typeof(dice), i).Substring(1));
+                diceIndex = int.Parse(Enum.GetName(typeof(Dice), i).Substring(1));
 
                 ulong.TryParse(textBoxArray[i].Text, out diceCount);
                 diceList[i * 2] = diceCount;
@@ -67,8 +67,11 @@ namespace D_D_Dice
             ulong total = 0;
             for (int i = 0; i < DICE_LIST_SIZE; i += 2)
             {
-                txtResult.Text += Enum.GetName(typeof(dice), (i / 2)) + ": Count = " +
+                if (diceList[i + 1] != 0)
+                {
+                    txtResult.Text += Enum.GetName(typeof(Dice), (i / 2)) + ": Count = " +
                     diceList[i].ToString() + ", Total = " + diceList[i + 1].ToString() + "\r\n";
+                }
                 
                 total += diceList[i + 1];
             }
